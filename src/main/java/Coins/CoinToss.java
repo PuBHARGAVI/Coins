@@ -27,7 +27,11 @@ public class CoinToss {
 		return false;
 	}
 
-	public double getProbabilityOfEvents(CoinToss event1, CoinToss event2) {
+	public double jointProbability(CoinToss event1, CoinToss event2) {
 		return event1.side.getSideProbability()*event2.side.getSideProbability();
+	}
+	
+	public double complementOfEvent() {
+		return (1-this.side.getSideProbability());
 	}
 }
