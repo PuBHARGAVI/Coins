@@ -48,5 +48,17 @@ public class CoinTossTest {
 
 		assertEquals(expectedValue, actualValue);
 	}
+	
+	@Test
+	public void testIfProbabilityOfTossingSuccessiveTailAndHeadIs0Point25() {
+		CoinToss event1Result = new CoinToss(CoinProbability.tail);
+		CoinToss event2Result = new CoinToss(CoinProbability.head);
+		double expectedValue = 0.25;
+		double actualValue;
+
+		actualValue = event1Result.getProbabilityOfEvents(event1Result, event2Result);
+
+		assertEquals(expectedValue, actualValue);
+	}
 
 }
