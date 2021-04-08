@@ -62,14 +62,24 @@ public class CoinTossTest {
 	}
 
 	@Test
-	public void testIfProbabilityOfNotTossingHeadIs0Point5() {
-		CoinToss headOnEvent = new CoinToss(CoinProbability.head);
+	public void testIfProbabilityOfNotGettingHeadOnCoinTossIs0Point5() {
+		CoinToss notHeadOnEvent = new CoinToss(CoinProbability.head);
 		double expectedValue = 0.5;
 		double actualValue;
 
-		actualValue = headOnEvent.complementOfEvent();
+		actualValue = notHeadOnEvent.complementOfEvent();
 
 		assertEquals(expectedValue, actualValue);
 	}
+	
+	@Test
+	public void testIfProbabilityOfNotGettingTailOnCoinTossIs0Point5() {
+		CoinToss notTailOnEvent = new CoinToss(CoinProbability.tail);
+		double expectedValue = 0.5;
+		double actualValue;
 
+		actualValue = notTailOnEvent.complementOfEvent();
+
+		assertEquals(expectedValue, actualValue);
+	}
 }
