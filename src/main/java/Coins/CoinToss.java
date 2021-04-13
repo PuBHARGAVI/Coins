@@ -27,11 +27,15 @@ public class CoinToss {
 		return false;
 	}
 
-	public double jointProbability(CoinToss event1, CoinToss event2) {
-		return event1.side.getSideProbability()*event2.side.getSideProbability();
+	public double jointEvents(CoinToss event) {
+		return this.side.getSideProbability() * event.side.getSideProbability();
 	}
-	
+
 	public double complementOfEvent() {
-		return (1-this.side.getSideProbability());
+		return (1 - this.side.getSideProbability());
+	}
+
+	public double orOfEvents(CoinToss event) {
+		return this.side.getSideProbability() + event.side.getSideProbability()-jointEvents(event);
 	}
 }

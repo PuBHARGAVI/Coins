@@ -15,70 +15,118 @@ public class CoinTossTest {
 
 	@Test
 	public void testIfProbabilityOfTossingTwoSuccessiveHeadsIs0Point25() {
-		CoinToss headOnEvent1 = new CoinToss(CoinProbability.head);
-		CoinToss headOnEvent2 = new CoinToss(CoinProbability.head);
+		CoinToss headOnToss1 = new CoinToss(CoinProbability.head);
+		CoinToss headOnToss2 = new CoinToss(CoinProbability.head);
 		double expectedValue = 0.25;
 		double actualValue;
 
-		actualValue = headOnEvent1.jointProbability(headOnEvent1, headOnEvent2);
+		actualValue = headOnToss2.jointEvents(headOnToss1);
 
 		assertEquals(expectedValue, actualValue);
 	}
 
 	@Test
 	public void testIfProbabilityOfTossingTwoSuccessiveTailsIs0Point25() {
-		CoinToss tailOnEvent1 = new CoinToss(CoinProbability.tail);
-		CoinToss tailOnEvent2 = new CoinToss(CoinProbability.tail);
+		CoinToss tailOnToss1 = new CoinToss(CoinProbability.tail);
+		CoinToss tailOnToss2 = new CoinToss(CoinProbability.tail);
 		double expectedValue = 0.25;
 		double actualValue;
 
-		actualValue = tailOnEvent1.jointProbability(tailOnEvent1, tailOnEvent2);
+		actualValue = tailOnToss2.jointEvents(tailOnToss1);
 
 		assertEquals(expectedValue, actualValue);
 	}
 
 	@Test
 	public void testIfProbabilityOfTossingSuccessiveHeadAndTailIs0Point25() {
-		CoinToss headOnEvent1 = new CoinToss(CoinProbability.head);
-		CoinToss tailOnEvent2 = new CoinToss(CoinProbability.tail);
+		CoinToss headOnToss1 = new CoinToss(CoinProbability.head);
+		CoinToss tailOnToss2 = new CoinToss(CoinProbability.tail);
 		double expectedValue = 0.25;
 		double actualValue;
 
-		actualValue = headOnEvent1.jointProbability(headOnEvent1, tailOnEvent2);
+		actualValue = tailOnToss2.jointEvents(headOnToss1);
 
 		assertEquals(expectedValue, actualValue);
 	}
 
 	@Test
 	public void testIfProbabilityOfTossingSuccessiveTailAndHeadIs0Point25() {
-		CoinToss tailOnEvent1 = new CoinToss(CoinProbability.tail);
-		CoinToss headOnEvent2 = new CoinToss(CoinProbability.head);
+		CoinToss tailOnToss1 = new CoinToss(CoinProbability.tail);
+		CoinToss headOnToss2 = new CoinToss(CoinProbability.head);
 		double expectedValue = 0.25;
 		double actualValue;
 
-		actualValue = tailOnEvent1.jointProbability(tailOnEvent1, headOnEvent2);
+		actualValue = headOnToss2.jointEvents(tailOnToss1);
 
 		assertEquals(expectedValue, actualValue);
 	}
 
 	@Test
 	public void testIfProbabilityOfNotGettingHeadOnCoinTossIs0Point5() {
-		CoinToss notHeadOnEvent = new CoinToss(CoinProbability.head);
+		CoinToss notHeadOnToss = new CoinToss(CoinProbability.head);
 		double expectedValue = 0.5;
 		double actualValue;
 
-		actualValue = notHeadOnEvent.complementOfEvent();
+		actualValue = notHeadOnToss.complementOfEvent();
 
 		assertEquals(expectedValue, actualValue);
 	}
-	
+
 	@Test
 	public void testIfProbabilityOfNotGettingTailOnCoinTossIs0Point5() {
-		CoinToss notTailOnEvent = new CoinToss(CoinProbability.tail);
+		CoinToss notTailOnToss = new CoinToss(CoinProbability.tail);
 		double expectedValue = 0.5;
 		double actualValue;
 
-		actualValue = notTailOnEvent.complementOfEvent();
+		actualValue = notTailOnToss.complementOfEvent();
+
+		assertEquals(expectedValue, actualValue);
+	}
+
+	@Test
+	public void testIfProbabilityOfGettingEitherHeadOnFirstCoinOrHeadOnSecondCoinIs0Point75() {
+		CoinToss headOnToss1 = new CoinToss(CoinProbability.head);
+		CoinToss headOnToss2 = new CoinToss(CoinProbability.head);
+		double expectedValue = 0.75;
+		double actualValue;
+
+		actualValue = headOnToss2.orOfEvents(headOnToss1);
+
+		assertEquals(expectedValue, actualValue);
+	}
+
+	@Test
+	public void testIfProbabilityOfGettingEitherTailOnFirstCoinOrTailOnSecondCoinIs0Point75() {
+		CoinToss headOnToss1 = new CoinToss(CoinProbability.tail);
+		CoinToss headOnToss2 = new CoinToss(CoinProbability.tail);
+		double expectedValue = 0.75;
+		double actualValue;
+
+		actualValue = headOnToss2.orOfEvents(headOnToss1);
+
+		assertEquals(expectedValue, actualValue);
+	}
+
+	@Test
+	public void testIfProbabilityOfGettingEitherHeadOnFirstCoinOrTailOnSecondCoinIs0Point75() {
+		CoinToss headOnToss1 = new CoinToss(CoinProbability.head);
+		CoinToss headOnToss2 = new CoinToss(CoinProbability.tail);
+		double expectedValue = 0.75;
+		double actualValue;
+
+		actualValue = headOnToss2.orOfEvents(headOnToss1);
+
+		assertEquals(expectedValue, actualValue);
+	}
+
+	@Test
+	public void testIfProbabilityOfGettingEitherTailOnFirstCoinOrHeadOnSecondCoinIs0Point75() {
+		CoinToss headOnToss1 = new CoinToss(CoinProbability.tail);
+		CoinToss headOnToss2 = new CoinToss(CoinProbability.head);
+		double expectedValue = 0.75;
+		double actualValue;
+
+		actualValue = headOnToss2.orOfEvents(headOnToss1);
 
 		assertEquals(expectedValue, actualValue);
 	}
