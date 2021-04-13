@@ -107,27 +107,4 @@ public class CoinTossTest {
 		assertEquals(expectedValue, actualValue);
 	}
 
-	@Test
-	public void testIfProbabilityOfGettingEitherHeadOnFirstCoinOrTailOnSecondCoinIs0Point75() {
-		CoinToss headOnToss1 = new CoinToss(CoinProbability.head);
-		CoinToss headOnToss2 = new CoinToss(CoinProbability.tail);
-		double expectedValue = 0.75;
-		double actualValue;
-
-		actualValue = headOnToss2.orOfEvents(headOnToss1);
-
-		assertEquals(expectedValue, actualValue);
-	}
-
-	@Test
-	public void testIfProbabilityOfGettingEitherTailOnFirstCoinOrHeadOnSecondCoinIs0Point75() {
-		CoinToss headOnToss1 = new CoinToss(CoinProbability.tail);
-		CoinToss headOnToss2 = new CoinToss(CoinProbability.head);
-		double expectedValue = 0.75;
-		double actualValue;
-
-		actualValue = headOnToss2.orOfEvents(headOnToss1);
-
-		assertEquals(expectedValue, actualValue);
-	}
 }
